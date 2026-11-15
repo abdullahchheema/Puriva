@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { nav, products, business, waLink } from "@/data/products";
 import { TLink } from "@/components/ui/TLink";
 import { PillButton } from "@/components/ui/PillButton";
@@ -86,6 +87,19 @@ export function Footer() {
       >
         PURIVA
       </div>
+      <p className="relative z-10 flex flex-wrap items-center justify-center gap-3 border-t border-white/10 bg-ocean-950 px-4 py-4 text-xs text-white/55">
+        Designed and developed by
+        <a
+          href="https://covison.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Covison, covison.com"
+          className="rounded-full bg-white px-4 py-1.5 transition-transform duration-300 hover:-translate-y-0.5"
+        >
+          <Image src="/brand/covison-logo.png" alt="Covison" width={890} height={272} className="h-6 w-auto" />
+        </a>
+        <span>covison.com</span>
+      </p>
     </footer>
   );
 }
