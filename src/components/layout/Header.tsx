@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
 import { gsap } from "gsap";
-import { nav } from "@/data/products";
+import { nav, waLink } from "@/data/products";
 import { TLink } from "@/components/ui/TLink";
-import { BrandMark } from "@/components/ui/BrandMark";
+import { Wordmark } from "@/components/ui/BrandMark";
 import { useScroll } from "@/components/motion/SmoothScroll";
 import { useIntroReady } from "@/components/motion/useIntroReady";
 import { usePageNavigate } from "@/components/motion/PageTransition";
@@ -97,9 +97,8 @@ export function Header() {
             scrolled ? "bg-ocean-950/80 shadow-[0_18px_50px_-18px_rgba(2,20,54,0.7)] backdrop-blur-xl" : "bg-ocean-950/35 backdrop-blur-md"
           } border border-white/15`}
         >
-          <TLink href="/" className="flex items-center gap-2.5" aria-label="Puriva home">
-            <BrandMark className="size-7 text-aqua" />
-            <span className="display text-xl tracking-[-0.02em]">PURIVA</span>
+          <TLink href="/" className="flex items-center text-xl" aria-label="Puriva home">
+            <Wordmark />
           </TLink>
 
           <nav aria-label="Primary" className="hidden lg:block">
@@ -126,12 +125,15 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <TLink
-              href="/contact"
-              className="hidden min-h-11 items-center rounded-full bg-white px-5 text-sm font-semibold text-ocean-900 transition-colors hover:bg-aqua sm:inline-flex"
+            <a
+              href={waLink("Hello Puriva, I would like to place an order.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-shine relative hidden min-h-11 items-center gap-2 overflow-hidden rounded-full bg-white px-5 text-sm font-semibold text-ocean-900 transition-colors hover:bg-aqua sm:inline-flex"
             >
-              Enquire
-            </TLink>
+              <MessageCircle className="size-4 text-[#128c4a]" aria-hidden="true" />
+              Order on WhatsApp
+            </a>
             <button
               ref={openBtn}
               type="button"
@@ -156,9 +158,8 @@ export function Header() {
         style={{ visibility: open ? "visible" : "hidden", clipPath: "circle(0% at calc(100% - 3rem) 2.5rem)" }}
       >
         <div className="flex items-center justify-between px-5 pt-5">
-          <span className="flex items-center gap-2.5">
-            <BrandMark className="size-7 text-aqua" />
-            <span className="display text-xl">PURIVA</span>
+          <span className="text-xl">
+            <Wordmark />
           </span>
           <button
             ref={closeBtn}
@@ -186,8 +187,17 @@ export function Header() {
             </li>
           ))}
         </ul>
-        <div data-item className="border-t border-white/10 px-6 py-6 text-xs tracking-widest text-white/50 uppercase">
-          Purified drinking water
+        <div data-item className="flex flex-col gap-4 border-t border-white/10 px-6 py-6">
+          <a
+            href={waLink("Hello Puriva, I would like to place an order.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-shine relative inline-flex min-h-12 w-fit items-center gap-2 overflow-hidden rounded-full bg-[#128c4a] px-6 text-sm font-semibold text-white"
+          >
+            <MessageCircle className="size-5" aria-hidden="true" />
+            Order on WhatsApp
+          </a>
+          <span className="text-xs tracking-widest text-white/50 uppercase">Purified drinking water</span>
         </div>
       </div>
     </>

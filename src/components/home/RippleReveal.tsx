@@ -9,9 +9,9 @@ import { Eyebrow } from "@/components/ui/PillButton";
 import { Bubbles } from "@/components/fx/Water";
 
 const principles = [
-  { n: "01", t: "Clean, by design", d: "Purified drinking water is the whole product. Nothing else is trying to be the point." },
-  { n: "02", t: "Careful at every step", d: "From the source to the sealed cap, quality control is treated as a habit, not a headline." },
-  { n: "03", t: "Easy to trust", d: "A clear label, a clear bottle and clear information, so you always know what you are drinking." },
+  { n: "01", t: "Deep underground origin", d: "Our water comes from deep underground, with an essential amount of minerals." },
+  { n: "02", t: "Reverse Osmosis", d: "Filtered using high safety standards and modern technology, then packed under hygienic conditions." },
+  { n: "03", t: "A report you can read", d: "A sample of Puriva water was tested by the PCRWR National Water Quality Laboratory. The full report is on the quality page." },
 ];
 
 /** A circle of water opens from the centre and reveals the quality teaser. */

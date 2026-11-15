@@ -5,15 +5,15 @@ import { Eyebrow } from "@/components/ui/PillButton";
 import { TLink } from "@/components/ui/TLink";
 import { ArrowUpRight } from "lucide-react";
 
-const order = ["1-5l", "500ml", "10l"] as const;
+const order = ["500ml", "1-5l", "19l"] as const;
 const copy: Record<string, { label: string; line: string; span: string; offset: string }> = {
-  "1-5l": { label: "At home", line: "On the table, in the fridge door, within reach all day.", span: "lg:col-span-5", offset: "" },
   "500ml": { label: "On the go", line: "Small enough for a pocket, simple enough to forget you have it.", span: "lg:col-span-3", offset: "lg:mt-24" },
-  "10l": { label: "For everyone", line: "A household jug for glasses, kettles and a full house.", span: "lg:col-span-4", offset: "lg:mt-10" },
+  "1-5l": { label: "At home", line: "On the table, in the fridge door, within reach all day.", span: "lg:col-span-5", offset: "" },
+  "19l": { label: "For everyone", line: "The big bottle for households, offices and shared spaces.", span: "lg:col-span-4", offset: "lg:mt-10" },
 };
 
 export function Moments() {
-  const phrase = "PURIFIED DRINKING WATER  ✦  EVERYDAY HYDRATION  ✦  FOUR SIZES  ✦  ";
+  const phrase = "PURIFIED DRINKING WATER  ✦  THREE SIZES  ✦  CUSTOM LABELS  ✦  ORDER ON WHATSAPP  ✦  ";
   return (
     <section className="relative overflow-hidden bg-icy pb-24 lg:pb-36">
       <div aria-hidden="true" className="overflow-hidden border-y border-royal/15 bg-royal py-4 text-white">
@@ -44,7 +44,7 @@ export function Moments() {
                 <Reveal delay={i * 0.1}>
                   <TLink
                     href={`/products/${slug}`}
-                    className="group relative block overflow-hidden rounded-[2rem] p-7 pb-0 text-white transition-transform duration-700 ease-out hover:-translate-y-2"
+                    className="gloss group relative block overflow-hidden rounded-[2rem] p-7 pb-0 text-white transition-transform duration-700 ease-out hover:-translate-y-2"
                     style={{ background: `linear-gradient(165deg, ${p.tint.from}, ${p.tint.to})` }}
                   >
                     <div className="flex items-start justify-between">

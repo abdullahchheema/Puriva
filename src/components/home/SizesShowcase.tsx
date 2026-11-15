@@ -9,9 +9,8 @@ import { prefersReducedMotion, registerGsap } from "@/lib/gsap";
 
 const heights: Record<string, string> = {
   "1-5l": "h-[min(48svh,30rem)] lg:h-[min(62svh,34rem)]",
-  "1l": "h-[min(44svh,27rem)] lg:h-[min(56svh,31rem)]",
   "500ml": "h-[min(34svh,20rem)] lg:h-[min(42svh,24rem)]",
-  "10l": "h-[min(34svh,20rem)] lg:h-[min(44svh,26rem)]",
+  "19l": "h-[min(44svh,28rem)] lg:h-[min(62svh,34rem)]",
 };
 
 export function SizesShowcase() {
@@ -68,10 +67,10 @@ export function SizesShowcase() {
         <div className="flex min-h-[70svh] shrink-0 flex-col justify-center gap-6 bg-ocean-950 px-[var(--page-pad)] py-24 lg:w-[70vw] lg:py-0 lg:pl-[max(var(--page-pad),8vw)]">
           <Eyebrow tone="light">The range</Eyebrow>
           <h2 id="sizes-title" className="display max-w-[11ch] text-[clamp(3rem,7vw,6.5rem)]">
-            Four sizes. One clear standard.
+            Three sizes. One clear standard.
           </h2>
           <p className="max-w-md text-lg text-white/65">
-            The same label, the same cap blue and the same purified drinking water, shaped for four different moments of the day.
+            The same label, the same cap blue and the same purified drinking water, shaped for three different moments of the day.
           </p>
           <p className="hidden items-center gap-3 text-xs tracking-[0.25em] text-aqua uppercase lg:flex">
             Keep scrolling <span className="h-px w-16 bg-aqua" />
@@ -96,7 +95,7 @@ export function SizesShowcase() {
             <div className="shell relative grid w-full items-center gap-8 lg:grid-cols-12">
               <div className="flex flex-col gap-5 lg:col-span-5">
                 <span className="text-xs font-semibold tracking-[0.25em] text-white/70 uppercase">
-                  0{i + 1} / 04 · {p.moment}
+                  0{i + 1} / 0{products.length} · {p.moment}
                 </span>
                 <h3 className="display text-[clamp(2.6rem,5.5vw,5rem)]">{p.tagline}</h3>
                 <p className="max-w-md text-white/75">{p.summary}</p>

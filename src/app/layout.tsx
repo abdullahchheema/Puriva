@@ -6,13 +6,14 @@ import { PageTransitionProvider } from "@/components/motion/PageTransition";
 import { Loader } from "@/components/motion/Loader";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { WhatsAppFab } from "@/components/ui/WhatsAppFab";
 
 const sans = Onest({ variable: "--f-sans", subsets: ["latin"], display: "swap" });
 const display = Bricolage_Grotesque({ variable: "--f-display", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: { default: "Puriva — Purified Drinking Water", template: "%s — Puriva" },
-  description: "Puriva purified drinking water, in 1.5L, 1L, 500ml and 10L bottles. Everyday hydration, beautifully simple.",
+  description: "Puriva purified drinking water from Shahpur, Islamabad, in 500ml, 1.5L and 19L bottles, with custom label bottles on request. Order on WhatsApp.",
 };
 
 export const viewport: Viewport = { themeColor: "#03112b", width: "device-width", initialScale: 1 };
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Header />
             <main id="main">{children}</main>
             <Footer />
+            <WhatsAppFab />
           </PageTransitionProvider>
         </SmoothScroll>
       </body>

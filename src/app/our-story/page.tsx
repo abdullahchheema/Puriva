@@ -23,7 +23,7 @@ const chapters = [
     n: "02",
     title: "Everyday hydration",
     lead: "Built for ordinary days.",
-    text: "Hydration is not an event. It is the glass at breakfast, the bottle in the bag, the jug in the kitchen. Our four sizes exist so Puriva fits into those moments without asking for attention.",
+    text: "Hydration is not an event. It is the glass at breakfast, the bottle in the bag, the jug in the kitchen. Our three sizes exist so Puriva fits into those moments without asking for attention.",
   },
   {
     n: "03",
@@ -60,10 +60,10 @@ export default function OurStoryPage() {
               gate
               as="h1"
               className="display text-[clamp(3rem,8.4vw,7.6rem)]"
-              lines={["Water,", "made", <span key="s" className="text-aqua">simple.</span>]}
+              lines={["Water,", "made", <span key="s" className="text-shine">simple.</span>]}
             />
             <Reveal gate delay={0.5} className="max-w-lg text-lg text-white/70">
-              Puriva is purified drinking water for everyday hydration. This is what we believe, how we look and the experience we want you to have.
+              Puriva is purified drinking water from Shahpur, Islamabad, made for everyday hydration. This is what we believe, how we look and the experience we want you to have.
             </Reveal>
           </div>
           <Reveal gate delay={0.3} y={50} className="flex justify-center lg:col-span-5">
@@ -93,7 +93,7 @@ export default function OurStoryPage() {
             <h2 className="display mt-5 text-[clamp(2.4rem,5vw,4.6rem)] text-ocean-900">Four ideas, one bottle.</h2>
             <div className="relative mt-10 hidden h-[24rem] place-items-center overflow-hidden rounded-[2rem] bg-gradient-to-b from-ice to-icy lg:grid">
               <Parallax speed={0.05}>
-                <Bottle size="1l" className="h-[22rem] w-auto drop-shadow-[0_24px_26px_rgba(10,51,117,0.3)]" />
+                <Bottle size="19l" className="h-[22rem] w-auto drop-shadow-[0_24px_26px_rgba(10,51,117,0.3)]" />
               </Parallax>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function OurStoryPage() {
           <div className="flex flex-col gap-6 lg:col-span-5">
             <Eyebrow tone="light">Brand identity</Eyebrow>
             <h2 className="display text-[clamp(2.4rem,5vw,4.6rem)]">The label is the logo is the bottle.</h2>
-            <p className="max-w-md text-white/80">A vertical white PURIVA wordmark in bold, geometric capitals. A leaf-and-water emblem. A single, confident blue.</p>
+            <p className="max-w-md text-white/80">A bold white PURIVA wordmark. A leaf-and-water emblem. A single, confident blue.</p>
             <ul className="grid grid-cols-2 gap-3 pt-2">
               {swatches.map((s) => (
                 <li key={s.name} className={`rounded-2xl p-4 ${s.fg}`} style={{ background: s.hex }}>
@@ -131,7 +131,7 @@ export default function OurStoryPage() {
           <Reveal className="flex items-end justify-center gap-4 lg:col-span-7">
             <Bottle size="500ml" droplets={false} className="h-56 w-auto drop-shadow-[0_24px_28px_rgba(2,20,54,0.5)] sm:h-72" />
             <Bottle size="1-5l" className="h-[22rem] w-auto drop-shadow-[0_24px_28px_rgba(2,20,54,0.5)] sm:h-[30rem]" />
-            <Bottle size="1l" droplets={false} className="h-64 w-auto drop-shadow-[0_24px_28px_rgba(2,20,54,0.5)] sm:h-[24rem]" />
+            <Bottle size="19l" droplets={false} className="h-64 w-auto drop-shadow-[0_24px_28px_rgba(2,20,54,0.5)] sm:h-[24rem]" />
           </Reveal>
         </div>
       </section>

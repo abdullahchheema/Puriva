@@ -1,9 +1,12 @@
-import { nav, products, business } from "@/data/products";
+import { nav, products, business, waLink } from "@/data/products";
 import { TLink } from "@/components/ui/TLink";
 import { PillButton } from "@/components/ui/PillButton";
-import { BrandMark } from "@/components/ui/BrandMark";
+import { Wordmark } from "@/components/ui/BrandMark";
 import { LineReveal } from "@/components/motion/Reveal";
 import { Bubbles, WaveDivider } from "@/components/fx/Water";
+import { Sparkles } from "@/components/fx/Sparkles";
+
+const link = "w-fit text-sm text-white/75 transition-colors hover:text-aqua";
 
 export function Footer() {
   return (
@@ -12,6 +15,7 @@ export function Footer() {
         <WaveDivider fill="#03112b" back="rgb(19 71 201 / 0.35)" />
       </div>
       <Bubbles count={10} className="opacity-60" />
+      <Sparkles />
       <div className="shell relative z-10 pt-16 pb-10 lg:pt-24">
         <div className="flex flex-col gap-10 border-b border-white/10 pb-16 lg:flex-row lg:items-end lg:justify-between">
           <LineReveal
@@ -20,45 +24,62 @@ export function Footer() {
             lines={["Stay fresh.", "Every day."]}
           />
           <div className="flex flex-col gap-5 lg:items-end">
-            <p className="max-w-sm text-white/60">Questions about sizes, availability or working with Puriva? Get in touch.</p>
-            <PillButton href="/contact" variant="light" arrow="up-right">
-              Enquire now
+            <p className="max-w-sm text-white/60 lg:text-right">Orders, prices and custom label bottles are all handled on WhatsApp.</p>
+            <PillButton href={waLink("Hello Puriva, I would like to place an order.")} variant="whatsapp" arrow="up-right">
+              Order on WhatsApp
             </PillButton>
           </div>
         </div>
 
-        <div className="grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-4">
-          <div className="flex flex-col gap-4">
-            <span className="flex items-center gap-2.5">
-              <BrandMark className="size-7 text-aqua" />
-              <span className="display text-xl">PURIVA</span>
+        <div className="grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-5">
+          <div className="flex flex-col gap-4 lg:col-span-1">
+            <span className="text-2xl">
+              <Wordmark />
             </span>
-            <p className="max-w-xs text-sm text-white/55">Purified drinking water for everyday hydration, in four sizes.</p>
+            <p className="max-w-xs text-sm text-white/55">Purified drinking water from {business.location}, in 500ml, 1.5L and 19L bottles.</p>
           </div>
           <FooterCol title="Explore">
             {nav.map((n) => (
-              <TLink key={n.href} href={n.href} className="w-fit text-sm text-white/75 transition-colors hover:text-aqua">
+              <TLink key={n.href} href={n.href} className={link}>
                 {n.label}
               </TLink>
             ))}
           </FooterCol>
           <FooterCol title="Products">
             {products.map((p) => (
-              <TLink key={p.slug} href={`/products/${p.slug}`} className="w-fit text-sm text-white/75 transition-colors hover:text-aqua">
+              <TLink key={p.slug} href={`/products/${p.slug}`} className={link}>
                 {p.name}
               </TLink>
             ))}
+            <TLink href="/custom-labels" className={link}>
+              Custom label bottles
+            </TLink>
           </FooterCol>
           <FooterCol title="Contact">
-            <span className="text-sm text-white/75">{business.email}</span>
-            <span className="text-sm text-white/75">{business.phone}</span>
-            <span className="text-sm text-white/45">{business.address.join(", ")}</span>
+            <a href={waLink("Hello Puriva, I would like some information about your water.")} target="_blank" rel="noopener noreferrer" className={link}>
+              WhatsApp {business.whatsappDisplay}
+            </a>
+            <a href={`tel:+${business.whatsapp}`} className={link}>
+              Call {business.phone}
+            </a>
+            <a href={`mailto:${business.email}`} className={`${link} break-all`}>
+              {business.email}
+            </a>
+            <span className="text-sm text-white/55">{business.location}</span>
+          </FooterCol>
+          <FooterCol title="Follow">
+            <a href={business.instagram.url} target="_blank" rel="noopener noreferrer" className={link}>
+              Instagram
+            </a>
+            <a href={business.tiktok.url} target="_blank" rel="noopener noreferrer" className={link}>
+              TikTok
+            </a>
           </FooterCol>
         </div>
 
         <div className="flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/45 sm:flex-row sm:items-center">
           <span>© {new Date().getFullYear()} Puriva. All rights reserved.</span>
-          <span>Frontend demo — contact details are placeholders.</span>
+          <span>Purified drinking water · {business.location}</span>
         </div>
       </div>
       <div

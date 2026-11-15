@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProduct, products, type BottleSize } from "@/data/products";
+import Image from "next/image";
+import { getProduct, products, waLink, type BottleSize } from "@/data/products";
 import { Bottle } from "@/components/bottle/Bottle";
 import { BottleStage } from "@/components/bottle/BottleStage";
 import { LineReveal, Reveal, Parallax } from "@/components/motion/Reveal";
@@ -22,9 +23,8 @@ export async function generateMetadata({ params }: PageProps<"/products/[slug]">
 
 const heroH: Record<BottleSize, string> = {
   "1-5l": "h-[min(60svh,34rem)]",
-  "1l": "h-[min(58svh,32rem)]",
   "500ml": "h-[min(46svh,26rem)]",
-  "10l": "h-[min(44svh,26rem)]",
+  "19l": "h-[min(58svh,32rem)]",
 };
 
 /** Callout positions (percent of the bottle box) for the anatomy diagram. */
@@ -35,23 +35,17 @@ const callouts: Record<BottleSize, { t: string; top: number; side: "l" | "r"; d:
     { t: "Royal-blue label", top: 52, side: "r", d: "Vertical PURIVA wordmark and emblem." },
     { t: "Petaloid base", top: 90, side: "l", d: "Ribbed base for a steady stand." },
   ],
-  "1l": [
-    { t: "Bright blue cap", top: 5, side: "r", d: "Same cap blue across the range." },
-    { t: "Slim clear body", top: 26, side: "l", d: "Easy to hold and to pack." },
-    { t: "Royal-blue label", top: 52, side: "r", d: "Vertical PURIVA wordmark and emblem." },
-    { t: "Ribbed base", top: 88, side: "l", d: "Stable on a desk or door pocket." },
-  ],
   "500ml": [
-    { t: "Sport-style cap", top: 5, side: "r", d: "Compact, easy to open one-handed." },
+    { t: "Bright blue cap", top: 5, side: "r", d: "Same cap blue across the range." },
     { t: "Compact body", top: 28, side: "l", d: "Made for pockets and bags." },
     { t: "Royal-blue label", top: 52, side: "r", d: "The same wordmark, scaled down." },
-    { t: "Ribbed base", top: 90, side: "l", d: "Keeps its footing." },
+    { t: "Blue ribbed base", top: 90, side: "l", d: "Keeps its footing." },
   ],
-  "10l": [
-    { t: "Carry handle", top: 14, side: "r", d: "Built into the shoulder of the jug." },
-    { t: "Large cap", top: 4, side: "l", d: "Wide neck and generous cap." },
-    { t: "Wide label", top: 54, side: "r", d: "Horizontal PURIVA wordmark." },
-    { t: "Broad base", top: 92, side: "l", d: "Stable and low for larger volumes." },
+  "19l": [
+    { t: "Blue cap", top: 4, side: "r", d: "Fits the narrow neck." },
+    { t: "Narrow neck", top: 12, side: "l", d: "Rounded shoulders below it." },
+    { t: "Royal-blue label", top: 56, side: "r", d: "Horizontal PURIVA wordmark and emblem." },
+    { t: "Ribbed body", top: 90, side: "l", d: "Rings at the shoulder and the base." },
   ],
 };
 
@@ -103,9 +97,8 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               </dl>
             </Reveal>
             <Reveal gate delay={0.6} className="flex flex-wrap gap-3">
-              <PillButton href={`/contact?product=${p.slug}`} variant="light">
-                Enquire about {p.amount}
-                {p.unit}
+              <PillButton href={waLink(`Hello Puriva, I would like to order the ${p.spoken}. Quantity: [ ]. Delivery address: [ ].`)} variant="whatsapp">
+                Order on WhatsApp
               </PillButton>
               <PillButton href="/products" variant="glass" arrow={false}>
                 All products
@@ -189,7 +182,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
           <div className="grid gap-4 lg:grid-cols-12">
             {/* close crop on the label */}
             <Reveal className="lg:col-span-5">
-              <div className="relative h-[26rem] overflow-hidden rounded-[2rem] lg:h-[34rem]" style={{ background: `linear-gradient(160deg, ${p.tint.from}, ${p.tint.to})` }}>
+              <div className="gloss relative h-[26rem] overflow-hidden rounded-[2rem] lg:h-[34rem]" style={{ background: `linear-gradient(160deg, ${p.tint.from}, ${p.tint.to})` }}>
                 <div className="absolute inset-0 grid place-items-center">
                   <Parallax speed={0.05}>
                     <Bottle size={size} className="h-[80rem] w-auto max-w-none" droplets />
@@ -216,9 +209,24 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                 <span className="absolute bottom-5 left-5 rounded-full bg-black/25 px-3 py-1 text-xs font-medium text-white backdrop-blur">In the water</span>
               </div>
             </Reveal>
+            {/* real photograph of the packaging */}
+            {size !== "19l" && (
+              <Reveal delay={0.04} className="lg:col-span-5">
+                <div className="relative h-[26rem] overflow-hidden rounded-[2rem] bg-ocean-950 lg:h-[26rem]">
+                  <Image
+                    src="/media/bottles-pair-close.jpeg"
+                    alt="The Puriva 1.5L and 500ml bottles photographed side by side"
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-cover object-[50%_60%]"
+                  />
+                  <span className="absolute bottom-5 left-5 rounded-full bg-black/35 px-3 py-1 text-xs font-medium text-white backdrop-blur">The real bottles</span>
+                </div>
+              </Reveal>
+            )}
             {/* droplets on light */}
-            <Reveal delay={0.04} className="lg:col-span-12">
-              <div className="relative grid h-[22rem] place-items-center overflow-hidden rounded-[2rem] bg-white lg:h-[26rem]">
+            <Reveal delay={0.04} className={size !== "19l" ? "lg:col-span-7" : "lg:col-span-12"}>
+              <div className="relative grid h-[26rem] place-items-center overflow-hidden rounded-[2rem] bg-white lg:h-[26rem]">
                 <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_50%_70%_at_50%_100%,#cfe9fb,transparent)]" />
                 <div className="relative flex items-end gap-6">
                   {products.map((o) => (
@@ -226,7 +234,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                       <Bottle
                         size={o.slug}
                         droplets={false}
-                        className={`${o.slug === "1-5l" ? "h-60" : o.slug === "1l" ? "h-52" : "h-32"} w-auto transition-transform duration-500 group-hover:-translate-y-2 drop-shadow-[0_18px_20px_rgba(10,51,117,0.25)]`}
+                        className={`${o.slug === "1-5l" ? "h-56" : o.slug === "19l" ? "h-72" : "h-36"} w-auto transition-transform duration-500 group-hover:-translate-y-2 drop-shadow-[0_18px_20px_rgba(10,51,117,0.25)]`}
                       />
                     </TLink>
                   ))}

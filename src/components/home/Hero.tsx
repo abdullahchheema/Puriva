@@ -1,6 +1,8 @@
 import { LineReveal, Reveal, Parallax } from "@/components/motion/Reveal";
 import { BottleStage } from "@/components/bottle/BottleStage";
 import { Bubbles, WaterCanvas } from "@/components/fx/Water";
+import { Sparkles } from "@/components/fx/Sparkles";
+import { waLink } from "@/data/products";
 import { PillButton, Eyebrow } from "@/components/ui/PillButton";
 import { ArrowDown } from "lucide-react";
 
@@ -16,6 +18,7 @@ export function Hero() {
       <div aria-hidden="true" className="absolute bottom-[-10%] left-[-10%] -z-10 size-[40rem] rounded-full bg-aqua/15 blur-[110px]" style={{ animation: "caustic 9s ease-in-out infinite" }} />
       <WaterCanvas className="-z-10" />
       <Bubbles count={16} className="-z-10" />
+      <Sparkles className="-z-10" />
 
       {/* watermark */}
       <Reveal gate y={40} className="pointer-events-none absolute inset-x-0 bottom-[6%] -z-10 text-center">
@@ -39,17 +42,17 @@ export function Hero() {
             delay={0.25}
             stagger={0.13}
             className="display text-[clamp(3.2rem,9vw,7.5rem)]"
-            lines={["Pure water,", <span key="e" className="text-aqua">every day.</span>]}
+            lines={["Pure water,", <span key="e" className="text-shine">every day.</span>]}
           />
           <Reveal gate delay={0.55} className="max-w-md text-lg text-white/70">
-            Puriva is made for everyday hydration. One clear standard, four bottle sizes, from the table at home to the bag on your shoulder.
+            Puriva is purified drinking water from Shahpur, Islamabad. Three bottle sizes, plus custom label bottles for restaurants and anyone who asks.
           </Reveal>
           <Reveal gate delay={0.7} className="flex flex-wrap gap-3">
             <PillButton href="/products" variant="light">
               Explore the range
             </PillButton>
-            <PillButton href="/our-story" variant="glass" arrow={false}>
-              Our story
+            <PillButton href={waLink("Hello Puriva, I would like to place an order.")} variant="whatsapp" arrow={false}>
+              Order on WhatsApp
             </PillButton>
           </Reveal>
         </div>
@@ -65,7 +68,7 @@ export function Hero() {
             </div>
             <div className="glass absolute right-[-1.5rem] bottom-[26%] hidden rounded-2xl px-4 py-3 text-xs font-medium sm:block lg:-right-32">
               <span className="block text-[0.65rem] tracking-[0.2em] text-aqua uppercase">Range</span>
-              1.5L · 1L · 500ml · 10L
+              500ml · 1.5L · 19L
             </div>
           </Reveal>
         </div>
@@ -74,7 +77,7 @@ export function Hero() {
       <Reveal gate delay={0.95} className="absolute inset-x-0 bottom-0">
         <div className="shell flex items-center justify-between border-t border-white/10 py-5 text-xs font-medium tracking-[0.2em] text-white/55 uppercase">
           <span>Everyday hydration</span>
-          <span className="hidden sm:block">Four sizes</span>
+          <span className="hidden sm:block">Three sizes · Custom labels</span>
           <span className="inline-flex items-center gap-2">
             Scroll
             <ArrowDown className="size-3.5 animate-bounce" aria-hidden="true" />

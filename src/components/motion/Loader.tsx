@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { registerGsap, prefersReducedMotion } from "@/lib/gsap";
 import { useScroll } from "./SmoothScroll";
 import { markIntroReady } from "./useIntroReady";
-import { BrandMark } from "@/components/ui/BrandMark";
+import { Wordmark } from "@/components/ui/BrandMark";
 
 const KEY = "puriva-intro-seen";
 
@@ -67,8 +67,9 @@ export function Loader() {
     >
       <div ref={content} className="flex flex-col items-center gap-10">
         <div className="flex flex-col items-center gap-4 text-center">
-          <BrandMark className="h-14 w-14 text-aqua" />
-          <span className="display text-4xl">PURIVA</span>
+          <span className="text-4xl">
+            <Wordmark />
+          </span>
           <span className="text-sm tracking-[0.25em] text-white/60 uppercase">Purified drinking water</span>
         </div>
         <div className="w-[min(22rem,72vw)]">

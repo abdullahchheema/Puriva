@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { products } from "@/data/products";
+import { products, waLink } from "@/data/products";
 import { Bottle } from "@/components/bottle/Bottle";
 import { BottleStage } from "@/components/bottle/BottleStage";
 import { LineReveal, Reveal } from "@/components/motion/Reveal";
@@ -10,14 +10,13 @@ import { TLink } from "@/components/ui/TLink";
 
 export const metadata: Metadata = {
   title: "Our Products",
-  description: "The Puriva range: 1.5L, 1L, 500ml and 10L purified drinking water bottles.",
+  description: "The Puriva range: 500ml, 1.5L and 19L purified drinking water bottles, plus custom label bottles.",
 };
 
 const scale: Record<string, string> = {
-  "1-5l": "h-[21rem]",
-  "1l": "h-[18.5rem]",
-  "500ml": "h-[12.5rem]",
-  "10l": "h-[13.5rem]",
+  "500ml": "h-[11rem]",
+  "1-5l": "h-[17rem]",
+  "19l": "h-[24rem]",
 };
 
 export default function ProductsPage() {
@@ -32,11 +31,11 @@ export default function ProductsPage() {
           <LineReveal
             gate
             as="h1"
-            lines={["One standard.", <span key="s" className="text-aqua">Four sizes.</span>]}
+            lines={["One standard.", <span key="s" className="text-shine">Three sizes.</span>]}
             className="display text-[clamp(3rem,9vw,8rem)]"
           />
           <Reveal gate delay={0.4} className="max-w-xl text-lg text-white/70">
-            Every Puriva bottle carries the same label, the same cap blue and the same purified drinking water. Choose the size that fits the moment.
+            Every Puriva bottle carries the same label, the same cap blue and the same purified drinking water. Choose the size that fits the moment, then order on WhatsApp.
           </Reveal>
         </div>
 
@@ -67,7 +66,7 @@ export default function ProductsPage() {
             return (
               <Reveal key={p.slug}>
                 <article
-                  className="relative overflow-hidden rounded-[2.5rem] text-white"
+                  className="gloss relative overflow-hidden rounded-[2.5rem] text-white"
                   style={{ background: `radial-gradient(ellipse 70% 80% at ${flip ? "30%" : "70%"} 55%, ${p.tint.glow}66, transparent 70%), linear-gradient(160deg, ${p.tint.from}, ${p.tint.to})` }}
                 >
                   <span
@@ -103,14 +102,17 @@ export default function ProductsPage() {
                           </li>
                         ))}
                       </ul>
-                      <div className="pt-2">
+                      <div className="flex flex-wrap gap-3 pt-2">
                         <PillButton href={`/products/${p.slug}`} variant="light">
                           View details
+                        </PillButton>
+                        <PillButton href={waLink(`Hello Puriva, I would like to order the ${p.spoken}. Quantity: [ ]. Delivery address: [ ].`)} variant="whatsapp" arrow={false}>
+                          Order on WhatsApp
                         </PillButton>
                       </div>
                     </div>
                     <div className={`flex justify-center lg:col-span-7 ${flip ? "lg:order-1" : ""}`}>
-                      <BottleStage size={p.slug} className={p.slug === "500ml" || p.slug === "10l" ? "h-[20rem] sm:h-[24rem]" : "h-[26rem] sm:h-[32rem]"} strength={7} />
+                      <BottleStage size={p.slug} className={p.slug === "500ml" ? "h-[20rem] sm:h-[24rem]" : "h-[26rem] sm:h-[32rem]"} strength={7} />
                     </div>
                   </div>
                 </article>
