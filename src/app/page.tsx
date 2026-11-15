@@ -7,6 +7,7 @@ import { WaveDivider } from "@/components/fx/Water";
 import { Eyebrow, PillButton } from "@/components/ui/PillButton";
 import { BrandMark } from "@/components/ui/BrandMark";
 import { Bottle } from "@/components/bottle/Bottle";
+import { Customers } from "@/components/home/Customers";
 import { Sparkles } from "@/components/fx/Sparkles";
 import { waLink } from "@/data/products";
 
@@ -75,6 +76,7 @@ export default function Home() {
 
       <RippleReveal />
       <Moments />
+      <Customers />
     </>
   );
 }

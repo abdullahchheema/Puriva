@@ -9,6 +9,7 @@ import { Sparkles } from "@/components/fx/Sparkles";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { Eyebrow, PillButton } from "@/components/ui/PillButton";
 import { ContactForm } from "@/components/home/ContactForm";
+import { SocialLinks } from "@/components/ui/SocialIcons";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -75,9 +76,7 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ul>
-              <a href={business.tiktok.url} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block border-b border-aqua pb-1 text-sm font-semibold text-white">
-                Follow Puriva on TikTok
-              </a>
+              <SocialLinks className="mt-6" />
             </Reveal>
             <Reveal delay={0.2} className="gloss grid grid-cols-[7rem_1fr] items-center gap-5 overflow-hidden rounded-[2rem] bg-royal p-6 text-white">
               <Image src="/brand/instagram-qr.jpeg" alt="Instagram QR code for @puriva_drinkingwater" width={720} height={1030} className="h-auto w-full rounded-2xl" />

@@ -108,13 +108,13 @@ export function Header() {
                   <TLink
                     href={n.href}
                     aria-current={isActive(n.href) ? "page" : undefined}
-                    className={`group relative block rounded-full px-4 py-2.5 transition-colors ${
+                    className={`group relative block rounded-full px-3 py-2.5 transition-colors xl:px-4 ${
                       isActive(n.href) ? "text-white" : "text-white/70 hover:text-white"
                     }`}
                   >
                     {n.label}
                     <span
-                      className={`absolute inset-x-4 bottom-1 h-px origin-left bg-aqua transition-transform duration-500 ease-out ${
+                      className={`absolute inset-x-3 bottom-1 h-px xl:inset-x-4 origin-left bg-aqua transition-transform duration-500 ease-out ${
                         isActive(n.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                       }`}
                     />
@@ -132,7 +132,9 @@ export function Header() {
               className="btn-shine relative hidden min-h-11 items-center gap-2 overflow-hidden rounded-full bg-white px-5 text-sm font-semibold text-ocean-900 transition-colors hover:bg-aqua sm:inline-flex"
             >
               <MessageCircle className="size-4 text-[#128c4a]" aria-hidden="true" />
-              Order on WhatsApp
+              <span>
+                <span className="hidden xl:inline">Order on </span>WhatsApp
+              </span>
             </a>
             <button
               ref={openBtn}

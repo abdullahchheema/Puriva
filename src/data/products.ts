@@ -87,6 +87,7 @@ export const nav = [
   { href: "/products", label: "Products" },
   { href: "/custom-labels", label: "Custom Labels" },
   { href: "/quality-purity", label: "Quality & Purity" },
+  { href: "/reviews", label: "Reviews" },
   { href: "/contact", label: "Contact" },
 ];
 

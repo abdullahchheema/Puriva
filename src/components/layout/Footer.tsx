@@ -5,6 +5,7 @@ import { Wordmark } from "@/components/ui/BrandMark";
 import { LineReveal } from "@/components/motion/Reveal";
 import { Bubbles, WaveDivider } from "@/components/fx/Water";
 import { Sparkles } from "@/components/fx/Sparkles";
+import { SocialLinks } from "@/components/ui/SocialIcons";
 
 const link = "w-fit text-sm text-white/75 transition-colors hover:text-aqua";
 
@@ -68,12 +69,8 @@ export function Footer() {
             <span className="text-sm text-white/55">{business.location}</span>
           </FooterCol>
           <FooterCol title="Follow">
-            <a href={business.instagram.url} target="_blank" rel="noopener noreferrer" className={link}>
-              Instagram
-            </a>
-            <a href={business.tiktok.url} target="_blank" rel="noopener noreferrer" className={link}>
-              TikTok
-            </a>
+            <SocialLinks />
+            <span className="text-sm text-white/55">{business.instagram.handle}</span>
           </FooterCol>
         </div>
 
